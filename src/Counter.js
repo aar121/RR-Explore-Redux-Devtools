@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment, incrementByAmount } from './features/counterSlice'
+import { decrement, increment, incrementByAmount, clearCounter } from './features/counterSlice'
+import { clearTodo } from './features/todoSlice'
 
 function Counter() {
     const count = useSelector((state) => state.counter.value)
@@ -27,7 +28,8 @@ function Counter() {
             </button>
             <form onSubmit={(e) => byAmount(e)}>
                 <input type="number" onChange={(e) => setInput(e.target.value)} />
-                <button type="submit">Submit</button>
+                <button type="submit">Enter counter</button>
+                <button onClick={() => dispatch(clearCounter())}>Clear</button>
             </form>
         </div>
     )
